@@ -1,0 +1,235 @@
+<html>
+<head>
+    <title>Development</title>
+    <!--    Required headers for bootstrap-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--    Bootstrap CSS -->
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+    <!--          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style type="text/css">
+        body {
+            margin-top: 20px;
+            background: whitesmoke;
+            font-family: Tahoma, sans-serif;
+        }
+    </style>
+    <script src="js/backend.js"></script>
+</head>
+
+<body bgcolor="#5f9ea0">
+<!--<div class="container">-->
+<!--<nav class="navbar navbar-expand-md navbar-light rounded" style="background-color: lightslategray; text-align: center">-->
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
+<!--            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+
+<!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--        <ul class="navbar-nav ml-auto mx-auto">-->
+<!--            <a class="navbar-brand" href="#">NJ Vax Finder</a>-->
+<!--            <li class="nav-item active">-->
+<!--                <a class="nav-link" href="#">Home</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item active">-->
+<!--                <a class="nav-link" href="#">Contact Us </a>-->
+<!--            </li>-->
+<!--&lt;!&ndash;            <li class="nav-item active">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="nav-link" href="#">About Us</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--</div>-->
+<!--<br>-->
+<!--<br>-->
+<!--<div class="container">-->
+<!--<img src="http://localhost:8081/images/stock.jpg" alt="prec" class="rounded mx-auto d-block" style="height: 300px; width: 1000px;">-->
+<!--</div>-->
+<br>
+<div class="container">
+    <a href="https://www.cdc.gov/" target="_blank"><img src="http://localhost:8081/images/banner.png" alt="banner" style="width: 1000px; height: 200px" class="rounded mx-auto d-block"></a>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="mb-4">
+                <div class="small mb-3">Search</div>
+                <div class="input-group">
+                    <input placeholder="Enter a zip code..." type="text" class="form-control" id='searchForm' style="border: solid">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" onclick="loadTable()" id='searchButton'><i
+                                class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="small mb-3">Overview</div>
+                <ul class="nav flex-column nav-pills">
+                    <li class="nav-item"><a href="#" class="nav-link active"><i class="fa fa-fw fa-line-chart mr-2"></i>Overview</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mb-4">
+                <div class="small mb-3"><strong>NJ COVID-19 Vaccine Statistics</strong></div>
+                <ul class="nav flex-column nav-pills">
+                    <li class="nav-item"><a href="#" class="d-flex nav-link"><i
+                            class="fa fa-fw fa-arrow-right align-self-center mr-2"></i>Doses Distributed<span id='DosesD'
+                            class="ml-auto align-self-center badge badge-secondary badge-pill">100</span></a></li>
+                    <li class="nav-item"><a href="#" class="d-flex nav-link"><i
+                            class="fa fa-fw fa-arrow-right align-self-center mr-2"></i>Doses Administered<span
+                            class="ml-auto align-self-center badge badge-secondary badge-pill" id='DosesA'>4</span></a></li>
+                    <li class="nav-item"><a href="#" class="d-flex nav-link"><i
+                            class="fa fa-fw fa-arrow-right align-self-center mr-2"></i>First Dose Received<span
+                            class="ml-auto align-self-center badge badge-secondary badge-pill" id='FDR'>78%</span></a></li>
+                    <li class="nav-item"><a href="#" class="d-flex nav-link"><i
+                            class="fa fa-fw fa-arrow-right align-self-center mr-2"></i>Second Dose Received<span
+                            class="ml-auto align-self-center badge badge-secondary badge-pill" id='SDR'>25%</span></a></li>
+                </ul>
+            </div>
+            <div class="small mb-2" id='LUD'>?</div>
+            <br>
+            <div class="mb-4">
+                <div class="small mb-3"><strong>Helpful Links</strong></div>
+                <ul class="nav flex-column nav-pills">
+                    <li class="nav-item"><a href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-vaccines.html" target="_blank" class="d-flex nav-link"><i
+                            class="fa fa-fw fa-arrow-right align-self-center mr-2" ></i>Vaccine Types</a></li>
+                    <li class="nav-item"><a href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-vaccines/how-they-work.html" target="_blank" class="d-flex nav-link"><i
+                            class="fa fa-fw fa-arrow-right align-self-center mr-2"></i>How Vaccines Work</a></li>
+                    <li class="nav-item"><a href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/expect.html" target="_blank" class="d-flex nav-link"><i
+                            class="fa fa-fw fa-arrow-right align-self-center mr-2"></i>Before Your Appointment</a></li>
+                    <li class="nav-item"><a href="https://vaers.hhs.gov/esub/index.jsp" target="_blank" class="d-flex nav-link"><i
+                            class="fa fa-fw fa-arrow-right align-self-center mr-2"></i>Report Vaccine Side Effects</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="d-flex flex-column flex-md-row mb-3 mb-md-0">
+                <nav class="mr-auto d-flex align-items-center" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <!--                        <li class="active breadcrumb-item" aria-current="page"><a href="/"><i class="fa fa-home"></i></a></li>-->
+                        <li class="active breadcrumb-item" aria-current="page">Showing <strong id='resultAmount'>X</strong> result(s)</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="mb-3 Card_custom-card--border_5wJKy card rounded">
+                <div class="table-responsive-xl ">
+                    <table class="mb-0 table table-hover" id='myTable'>
+                        <thead>
+                        <tr>
+                            <th class="align-middle bt-0">Name</th>
+                            <th class="align-middle bt-0">Phone</th>
+                            <th class="align-middle bt-0">Website</th>
+                            <th class="align-middle bt-0">Zip Code</th>
+<!--                            <th class="align-middle bt-0">Miles</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="align-middle">
+                                <div>CVS Pharmacy</div>
+                            </td>
+                            <td class="align-middle"><span class="badge badge-success badge-pill">1-800-552-8159</span>
+                            </td>
+                            <td class="align-middle">
+                                <div><span><a href="http://www.cvs.com/immunizations/covid-19-vaccine" target="_blank"><span class="badge badge-info  badge-pill" style="font-size: small">Website <i class="fa fa-external-link"></i></span></a></span></div>
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle">
+                                <div>ShopRite</div>
+                            </td>
+                            <td class="align-middle"><span class="badge badge-success badge-pill">1-800-746-7748</span>
+                            </td>
+                            <td class="align-middle">
+                                <div><span><a href="https://vaccines.shoprite.com" target="_blank"><span class="badge badge-info  badge-pill" style="font-size: small">Website <i class="fa fa-external-link"></i></span></a></span></div>
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle">
+                                <div>RiteAid</div>
+                            </td>
+                            <td class="align-middle"><span class="badge badge-success badge-pill">1-800-748-3242</span>
+                            </td>
+                            <td class="align-middle">
+                                <div><span><a href="http://www.riteaid.com" target="_blank"><span class="badge badge-info  badge-pill" style="font-size: small">Website <i class="fa fa-external-link"></i></span></a></span></div>
+                            </td>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<!--<div class="container">-->
+<!--    <div class="alert alert-warning alert-dismissible fade show" role="alert">-->
+<!--        <strong>Notice!</strong> If any information is inaccurate please contact us!-->
+<!--        <br>-->
+<!--        <p>To get your covid vaccine you must be eligible! Click <a href="https://covid19.nj.gov/pages/vaccine">here</a>-->
+<!--            to find out if you are eligible in New Jersey.</p>-->
+<!--        <p>If your residence is not in New Jersey, navigate to your state's website to find out if you are eligible for-->
+<!--            the vaccine.</p>-->
+<!--        <p>If you are currently feeling covid symptoms, get tested right away.</p>-->
+<!--        <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="w3-bar w3-light-gray">
+    <p></p>
+</div>
+<div class="w3-bar w3-dark-gray">
+<span>
+    <div class="w3-bar-item">
+        <a href="#">Contact Us</a>
+    </div>
+    <div class="w3-bar-item">
+        <a href="#">Built by Blok Automation LLC</a>
+    </div>
+    <div class="w3-bar-item" style="position: absolute; right:100px">
+        <p>Powered by:</p>
+        <a href="https://www.digitalocean.com/" target="_blank"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/DigitalOcean_logo.svg/1200px-DigitalOcean_logo.svg.png"
+                style="width: 50px; height: 50px" alt="Digital Ocean"></a>
+        <a href="http://www.python.org" target="_blank">
+            <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png" alt="Python" style="width: 50px; height: 50px">
+        </a>
+        <a href="http://www.jetbrains.com/webstorm" target="_blank">
+            <img src="https://resources.jetbrains.com/storage/products/webstorm/img/meta/webstorm_logo_300x300.png"
+                 alt="WebStorm" style="height: 50px; width: 50px">
+        </a>
+        <a href="http://nodejs.org" target="_blank">
+            <img src="https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399_960_720.png"
+                 alt="NodeJs" style="width: 80px; height: 80px">
+        </a>
+    </div>
+</span>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+</body>
+<script>
+    setTimeout(fetch, 200)
+</script>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+</html>
