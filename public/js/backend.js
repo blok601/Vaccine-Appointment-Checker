@@ -2,7 +2,7 @@ var cache = {}
 var vdata = {}
 
 function fetch() {
-    $.get('http://localhost:8081/data', {}, function (data) {
+    $.get('http://www.njvaxfinder.com:80/data', {}, function (data) {
         // console.log("Printing data from get:")
         // console.log("Type: "+ (typeof data))
         for (var k in data) {
@@ -11,27 +11,27 @@ function fetch() {
         // console.log(cache)
     });
 
-    $.get('http://localhost:8081/vdata', {}, function (data) {
-        console.log(data)
+    $.get('http://www.njvaxfinder.com/vdata', {}, function (data) {
+        // console.log(data)
         vdata = data
         for (var k in data) {
-            console.log("Loop: " + k)
+            // console.log("Loop: " + k)
         }
 
         var extra = data[0];
         for (var b in extra) {
-            console.log("Loop2: " + b);
-            console.log("Loop Value: " + data[0][b])
+            // console.log("Loop2: " + b);
+            // console.log("Loop Value: " + data[0][b])
             vdata[b] = data[0][b]
         }
 
 
-        console.log(vdata)
+        // console.log(vdata)
         document.getElementById('DosesD').innerHTML = numberWithCommas(vdata["Doses_Distributed"]);
         document.getElementById('DosesA').innerHTML = numberWithCommas(vdata["Doses_Administered"]);
         document.getElementById('FDR').innerHTML = numberWithCommas(vdata["Administered_Dose1_Recip"]);
         document.getElementById('SDR').innerHTML = numberWithCommas(vdata["Administered_Dose2_Recip"]);
-        document.getElementById('LUD').innerHTML = vdata["Last_Updated"]
+        document.getElementById('LUD').innerHTML = "Last Updated: " + vdata["Last_Updated"]
     });
 
 
@@ -40,8 +40,8 @@ function fetch() {
 function loadTable() {
     var zip = document.getElementById('searchForm').value;
     if (zip === undefined || zip === "") {
-        console.log("Broke")
-        clearTable()
+        //console.log("Broke")
+       // clearTable()
         return;
     }
     clearTable();
@@ -70,6 +70,13 @@ function loadTable() {
         var g = "\" target=\"_blank\""
         var end = ">" + link
         var close = "</a>"
+        if(link.startsWith("http://")){
+            link = link.replace("http://", "");
+        }
+        
+        if(link.startsWith("https://")){
+            link = link.replace("https://", "")
+        }
 
         var webStart = "<div><span><a href=\"http://" + link + "\" target=\"_blank\"><span class=\"badge badge-info badge-pill\" style=\"font-size: small\">Website <i class=\"fa fa-external-link\"></i></span></a></span></div>"
         websiteCell.innerHTML = webStart;
@@ -115,7 +122,53 @@ function loadTable() {
     RiteAidPhone.innerHTML = phoneTag + "1-800-748-3242" + closePhoneTag
     RiteAidWebsite.innerHTML = webStart + "www.riteaid.com" + webEnd
 
+    var ACMRow = table.insertRow(ids.length + 4);
+    var ACMName = ACMRow.insertCell(0);
+    var ACMPhone = ACMRow.insertCell(1);
+    var ACMWebsite = ACMRow.insertCell(2);
+    ACMName.innerHTML = "<strong>Atlantic County Megasite<strong>";
+    // ACMPhone.innerHTML = phoneTag + "" + closePhoneTag
+    ACMWebsite.innerHTML = webStart + "vaccination.atlanticare.org/default.aspx" + webEnd
 
+    var BCMRow = table.insertRow(ids.length + 5);
+    var BCMName = BCMRow.insertCell(0);
+    var BCMPhone = BCMRow.insertCell(1);
+    var BCMWebsite = BCMRow.insertCell(2);
+    BCMName.innerHTML = "<strong>Bergen County Megasite<strong>";
+    // BCMPhone.innerHTML = phoneTag + "X" + closePhoneTag
+    BCMWebsite.innerHTML = webStart + "www.hackensackmeridianhealth.org/covid19/" + webEnd
+
+    var BurlRow = table.insertRow(ids.length + 6);
+    var BurlName = BurlRow.insertCell(0);
+    var BurlPhone = BurlRow.insertCell(1);
+    var BurlWebsite = BurlRow.insertCell(2);
+    BurlName.innerHTML = "<strong>Burlington County Megasite<strong>";
+    // BurlPhone.innerHTML = phoneTag + "(855) 568-0545" + closePhoneTag
+    BurlWebsite.innerHTML = webStart + "www.virtua.org/vaccine" + webEnd
+
+    var GCMRow = table.insertRow(ids.length + 7);
+    var GCMName = GCMRow.insertCell(0);
+    var GCMPhone = GCMRow.insertCell(1);
+    var GCMWebsite = GCMRow.insertCell(2);
+    GCMName.innerHTML = "<strong>Gloucester County Megasite<strong>";
+    // GCMPhone.innerHTML = phoneTag + "X" + closePhoneTag
+    GCMWebsite.innerHTML = webStart + "covidvaccine.nj.gov" + webEnd
+
+    var MCMRow = table.insertRow(ids.length + 8);
+    var MCMName = MCMRow.insertCell(0);
+    var MCMPhone = MCMRow.insertCell(1);
+    var MCMWebsite = MCMRow.insertCell(2);
+    MCMName.innerHTML = "<strong>Middlesex County Megasite<strong>";
+    // MCMPhone.innerHTML = phoneTag + "(732) 745-3100" + closePhoneTag
+    MCMWebsite.innerHTML = webStart + "www.rwjbh.org/patients-visitors/what-you-need-to-know-about-covid-19/schedule-a-vaccine/covid-19-vaccine-appointment-request-form/" + webEnd
+
+    var MorrisRow = table.insertRow(ids.length + 9);
+    var MorrisName = MorrisRow.insertCell(0);
+    var MorrisPhone = MorrisRow.insertCell(1);
+    var MorrisWebsite = MorrisRow.insertCell(2);
+    MorrisName.innerHTML = "<strong>Morris County Megasite<strong>";
+    // MorrisPhone.innerHTML = phoneTag + "X" + closePhoneTag
+    MorrisWebsite.innerHTML = webStart + "www.atlantichealth.org/conditions-treatments/coronavirus-covid-19/covid-vaccine.html?utm_source=multiple&utm_medium=multiple&utm_campaign=vaccine" + webEnd
 
 }
 
